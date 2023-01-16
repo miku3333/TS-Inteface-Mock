@@ -1,0 +1,195 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "IItem": {
+      "type": "object",
+      "properties": {
+        "num": {
+          "type": "number"
+        },
+        "key": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "num",
+        "key"
+      ],
+      "additionalProperties": false
+    },
+    "DATA1": {
+      "type": "object",
+      "properties": {
+        "/api/test6": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "number"
+        },
+        "/api/test4": {
+          "type": "string"
+        },
+        "/api/test5": {
+          "type": "number"
+        },
+        "/api/test3": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "/api/test4",
+        "/api/test5",
+        "/api/test3"
+      ],
+      "additionalProperties": false
+    },
+    "DATA": {
+      "type": "object",
+      "properties": {
+        "/api/test1": {
+          "$ref": "#/definitions/Person"
+        },
+        "/api/test2": {
+          "type": "number"
+        },
+        "/api/test3": {
+          "type": "boolean"
+        },
+        "/api/test33": {
+          "type": "boolean"
+        },
+        "/api/test4": {
+          "type": "string",
+          "enum": [
+            "video",
+            "audio"
+          ]
+        },
+        "/api/test5": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "/api/test6": {
+          "type": "object",
+          "properties": {
+            "isTop": {
+              "type": "boolean"
+            },
+            "isOnline": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "isTop"
+          ],
+          "additionalProperties": false
+        },
+        "/api/test7": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "/api/test1",
+        "/api/test2",
+        "/api/test33",
+        "/api/test4",
+        "/api/test5",
+        "/api/test6",
+        "/api/test7"
+      ],
+      "additionalProperties": false
+    },
+    "Person": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string",
+          "enum": [
+            "Male",
+            "Female"
+          ]
+        },
+        "age": {
+          "type": "number"
+        },
+        "age2": {
+          "type": "number"
+        },
+        "age3": {
+          "type": "null"
+        },
+        "age4": {
+          "type": "number",
+          "const": 0
+        },
+        "age5": {
+          "type": "null"
+        },
+        "age6": {
+          "not": {}
+        },
+        "age7": {
+          "type": "string",
+          "const": ""
+        },
+        "age8": {
+          "type": "string"
+        },
+        "age9": {
+          "type": "null"
+        },
+        "age10": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "name",
+        "gender",
+        "age",
+        "age2",
+        "age3",
+        "age4",
+        "age5",
+        "age7",
+        "age8",
+        "age9",
+        "age10"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

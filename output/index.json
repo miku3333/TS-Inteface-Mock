@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "IItem": {
+      "type": "object",
+      "properties": {
+        "num": {
+          "type": "number"
+        },
+        "key": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "num",
+        "key"
+      ],
+      "additionalProperties": false
+    },
+    "DATA1": {
+      "type": "object",
+      "properties": {
+        "/api/test6": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "number"
+        },
+        "/api/test4": {
+          "type": "string"
+        },
+        "/api/test5": {
+          "type": "number"
+        },
+        "/api/test3": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "allCached": {
+                "type": "boolean"
+              },
+              "cacheList": {
+                "type": "array",
+                "items": {}
+              }
+            },
+            "required": [
+              "allCached",
+              "cacheList"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "/api/test4",
+        "/api/test5",
+        "/api/test3"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

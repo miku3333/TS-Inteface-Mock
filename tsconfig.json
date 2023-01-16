@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "lib": [
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "incremental": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "src/types"
+        ],
+    },
+    "ts-node": {
+        "esm": true
+    },
+    "files": [
+        "src/types/declarations.d.ts",
+        "src/types/schema.d.ts",
+    ],
+    "include": [
+        "src",
+        "input",
+        "server/router",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
