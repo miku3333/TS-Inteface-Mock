@@ -16,6 +16,16 @@ export enum SCHEMA_TYPE {
     any = 9,
     object = 10
 }
+export const SUCCESS_RES = {
+    code: 0,
+    success: true,
+    msg: null
+};
+export const ERROR_RES = {
+    code: -1,
+    success: false,
+    msg: null
+};
 // export const inputPath = slash(path.resolve(__dirname, 'interface/*'));
 // export const outputPath = path.resolve(__dirname, '../output/');
 // export const outputPathSingleFile = path.resolve(outputPath, 'output.json');

@@ -29,8 +29,7 @@
     ],
     "include": [
         "src",
-        "input",
-        "server/router",
+        "input"
     ],
     "exclude": [
         "node_modules"

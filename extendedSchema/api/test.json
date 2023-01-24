@@ -1,0 +1,10 @@
+{
+  "route": "/api/test",
+  "schema": {
+    "key": 10,
+    "required": [
+      "age",
+      "name"
+    ]
+  }
+}
