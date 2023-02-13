@@ -1,0 +1,148 @@
+{
+  "path": "/jd1",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "search": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "banners": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 1,
+          "extraType": "string"
+        }
+      },
+      "vajras": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "img": {
+              "key": 1,
+              "extraType": "string"
+            },
+            "name": {
+              "key": 1,
+              "extraType": "string"
+            }
+          },
+          "required": [
+            "img",
+            "name"
+          ]
+        }
+      },
+      "scrolls": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "img": {
+              "key": 1,
+              "extraType": "string"
+            },
+            "value": {
+              "key": 2,
+              "extraType": "number"
+            }
+          },
+          "required": [
+            "img",
+            "value"
+          ]
+        }
+      },
+      "goodsList": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "img": {
+              "key": 1,
+              "extraType": "string"
+            },
+            "title": {
+              "key": 1,
+              "extraType": "string"
+            },
+            "value": {
+              "key": 2,
+              "extraType": "number"
+            },
+            "lowDay": {
+              "key": 2,
+              "extraType": "number"
+            },
+            "jdLogistics": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "remarkCount": {
+              "key": 2,
+              "extraType": "number"
+            },
+            "favorableRate": {
+              "key": 2,
+              "extraType": "number"
+            },
+            "selfSupport": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "seckill": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "jdSuperMarket": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "fullDiscount": {
+              "key": 7,
+              "extraType": "array",
+              "items": {
+                "key": 2,
+                "extraType": "number"
+              },
+              "min": 2,
+              "max": 2
+            },
+            "numberDiscount": {
+              "key": 7,
+              "extraType": "array",
+              "items": {
+                "key": 2,
+                "extraType": "number"
+              },
+              "min": 2,
+              "max": 2
+            }
+          },
+          "required": [
+            "img",
+            "title",
+            "value",
+            "selfSupport"
+          ]
+        }
+      }
+    },
+    "required": [
+      "search",
+      "banners",
+      "vajras",
+      "scrolls",
+      "goodsList"
+    ]
+  }
+}

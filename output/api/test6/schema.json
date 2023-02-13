@@ -1,0 +1,20 @@
+{
+  "path": "/api/test6",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "isTop": {
+        "key": 4,
+        "extraType": "boolean"
+      },
+      "isOnline": {
+        "key": 4,
+        "extraType": "boolean"
+      }
+    },
+    "required": [
+      "isTop"
+    ]
+  }
+}

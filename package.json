@@ -13,6 +13,7 @@
     "serve": "npm run start"
   },
   "dependencies": {
+    "@types/mime-types": "^2.1.1",
     "dayjs": "^1.11.7",
     "fast-glob": "^3.2.12",
     "fs-extra": "^11.1.0",
@@ -21,6 +22,7 @@
     "koa-cors": "^0.0.16",
     "koa-router": "^12.0.0",
     "lodash": "^4.17.21",
+    "mime-types": "^2.1.35",
     "mockjs": "^1.1.0",
     "nanoid": "3",
     "nice-try": "^3.0.1",

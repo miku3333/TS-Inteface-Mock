@@ -3,6 +3,7 @@
   "ignore": [
     "output",
     "abandon",
-    "mockOutput"
+    "mockOutput",
+    "test.json"
   ]
 }

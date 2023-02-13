@@ -6,5 +6,6 @@ const router = new Router();
 
 router.post('/save', save);
 router.post('/find', find);
+// router.all('/img', img);
 
 export default router;

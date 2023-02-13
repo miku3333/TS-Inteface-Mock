@@ -3,21 +3,29 @@ import { ERROR_RES, ROOT_PATH, SUCCESS_RES } from '../../constants';
 import { niceTryAsync } from '../../utils';
 import fs from 'fs-extra';
 import slash from 'slash';
-import path from 'path';
-
-const outputDir = path.join(ROOT_PATH, 'extendedSchema');
+import pathM from 'path';
 
 const find: Router.IMiddleware = async (ctx) => {
-    const { route } = ctx.request.body as IObject;
-    if (route) {
-        const outputPath = slash(path.join(outputDir, `${route}.json`));
-        const exists = await fs.pathExists(outputPath);
-        if (exists) {
-            const result = await niceTryAsync(async () => {
+    const { path } = ctx.request.body as IObject;
+    if (path) {
+        const outputPathExtended = slash(pathM.join(ROOT_PATH, 'extendedSchema', `${path}/schema.json`));
+        const outputPath = slash(pathM.join(ROOT_PATH, 'output', `${path}/schema.json`));
+        console.log('outputPathExtended ===> ', outputPathExtended);
+        console.log('outputPath ===> ', outputPath);
+        if (await fs.pathExists(outputPathExtended)) {
+            const schema = await niceTryAsync(async () => {
+                return await fs.readJson(outputPathExtended);
+            });
+            if (schema) {
+                ctx.body = { ...SUCCESS_RES, data: schema };
+                return;
+            }
+        } else if (await fs.pathExists(outputPath)) {
+            const schema = await niceTryAsync(async () => {
                 return await fs.readJson(outputPath);
             });
-            if (result?.schema) {
-                ctx.body = { ...SUCCESS_RES, data: result.schema };
+            if (schema) {
+                ctx.body = { ...SUCCESS_RES, data: schema };
                 return;
             }
         } else {

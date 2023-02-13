@@ -1,7 +1,10 @@
 import { JSONSchema7, JSONSchema7Definition, JSONSchema7TypeName } from 'json-schema';
 import _ from 'lodash';
 import { SchemaGenerator } from 'ts-json-schema-generator';
-import { SCHEMA_TYPE } from '../../constants';
+import { ROOT_PATH, SCHEMA_TYPE } from '../../constants';
+import fs from 'fs-extra';
+import slash from 'slash';
+import path from 'path';
 // import {
 //     IAllSchema,
 //     IAnyOfSchema,
@@ -253,10 +256,10 @@ export interface IIHandleSchemaConfig {
 
 const handleSchema = (schema: JSONSchema7, config?: IIHandleSchemaConfig) => {
     const { format = true } = config || {};
-    const effectiveSchema = getEffectiveSchema(schema);
-    const effectiveSchemaStr = JSON.stringify(effectiveSchema, null, 2);
-    const formattedSchema = formatSchema(effectiveSchema);
-    const formattedSchemaStr = JSON.stringify(formattedSchema, null, 2);
+    const effectiveSchemas = getEffectiveSchema(schema);
+    fs.writeFile(slash(path.join(ROOT_PATH, 'test.json')), JSON.stringify(effectiveSchemas, null, 2));
+    console.log('effectiveSchemas ===> ', effectiveSchemas);
+    const formattedSchemas = formatSchema(effectiveSchemas);
     // console.log(format);
     // console.log(formattedSchema);
     // _.toPairs(result)
@@ -264,8 +267,8 @@ const handleSchema = (schema: JSONSchema7, config?: IIHandleSchemaConfig) => {
     //     .map(([name, schema]) => [name]);
     // console.log(test);
     return {
-        effectiveSchemaStr,
-        formattedSchemaStr
+        effectiveSchemas,
+        formattedSchemas
     };
 };
 

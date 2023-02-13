@@ -1,0 +1,11 @@
+{
+  "path": "/api/test5",
+  "schema": {
+    "key": 7,
+    "extraType": "array",
+    "items": {
+      "key": 1,
+      "extraType": "string"
+    }
+  }
+}

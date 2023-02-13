@@ -1,0 +1,11 @@
+{
+  "path": "/api/test4",
+  "schema": {
+    "key": 6,
+    "extraType": "enum",
+    "enum": [
+      "video",
+      "audio"
+    ]
+  }
+}

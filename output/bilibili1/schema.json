@@ -1,0 +1,53 @@
+{
+  "path": "/bilibili1",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "tags": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 1,
+          "extraType": "string"
+        }
+      },
+      "videos": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "coverUrl": {
+              "key": 1,
+              "extraType": "string"
+            },
+            "play": {
+              "key": 2,
+              "extraType": "number"
+            },
+            "danmu": {
+              "key": 2,
+              "extraType": "number"
+            },
+            "title": {
+              "key": 1,
+              "extraType": "string"
+            }
+          },
+          "required": [
+            "coverUrl",
+            "play",
+            "danmu",
+            "title"
+          ]
+        }
+      }
+    },
+    "required": [
+      "tags",
+      "videos"
+    ]
+  }
+}

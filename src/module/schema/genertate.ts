@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
 import { MTIME_INTERVAL } from '../../constants';
 import handleSchema from './handle';
+import slash from 'slash';
 
 const tsconfigPath = path.resolve(ROOT_PATH, './tsconfig.json');
 
@@ -39,7 +40,9 @@ const generateSchema = async (options: IGenertateSchemaOption) => {
             };
             const gen = tsj.createGenerator(config);
             const schema = gen.createSchema();
-            const { effectiveSchemaStr, formattedSchemaStr } = handleSchema(schema);
+            const { effectiveSchemas, formattedSchemas } = handleSchema(schema);
+            const effectiveSchemaStr = JSON.stringify(effectiveSchemas, null, 2);
+            const formattedSchemaStr = JSON.stringify(formattedSchemas, null, 2);
             const jsonNameNoFormattd = 'singleNoFormattd.json';
             const jsonName = 'single.json';
             fs.outputFile(path.resolve(outputPath, jsonNameNoFormattd), effectiveSchemaStr, (err) => {
@@ -47,6 +50,13 @@ const generateSchema = async (options: IGenertateSchemaOption) => {
             });
             fs.outputFile(path.resolve(outputPath, jsonName), formattedSchemaStr, (err) => {
                 if (err) throw err;
+            });
+            formattedSchemas.forEach((formattedSchema) => {
+                const routeName = formattedSchema.path;
+                const routePath = slash(path.resolve(outputPath, `.${routeName}/schema.json`));
+                fs.ensureFile(routePath).then(() => {
+                    fs.writeJsonSync(routePath, formattedSchema, { spaces: '  ', flag: 'w+' });
+                });
             });
         }
     } else {
@@ -64,7 +74,9 @@ const generateSchema = async (options: IGenertateSchemaOption) => {
             };
             const gen = tsj.createGenerator(config);
             const schema = gen.createSchema();
-            const { effectiveSchemaStr, formattedSchemaStr } = handleSchema(schema);
+            const { effectiveSchemas, formattedSchemas } = handleSchema(schema);
+            const effectiveSchemaStr = JSON.stringify(effectiveSchemas, null, 2);
+            const formattedSchemaStr = JSON.stringify(formattedSchemas, null, 2);
             const name = file.name.split('.')[0] || nanoid();
             const jsonNameNoFormattd = `${name}NoFormattd.json`;
             const jsonName = `${name}.json`;

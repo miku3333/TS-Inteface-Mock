@@ -1,0 +1,7 @@
+{
+  "path": "/api/test3",
+  "schema": {
+    "key": 4,
+    "extraType": "boolean"
+  }
+}

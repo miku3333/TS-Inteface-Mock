@@ -1,0 +1,480 @@
+{
+  "path": "/api/test",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "type0": {
+        "key": 3,
+        "extraType": "null"
+      },
+      "type1": {
+        "key": 3,
+        "extraType": "null"
+      },
+      "type2": {
+        "key": 3,
+        "extraType": "null"
+      },
+      "type3": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "type4": {
+        "key": 2,
+        "extraType": "number"
+      },
+      "type5": {
+        "key": 4,
+        "extraType": "boolean"
+      },
+      "type6": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 1,
+          "extraType": "string"
+        }
+      },
+      "type7": {
+        "key": 10,
+        "extraType": "object",
+        "properties": {
+          "name": {
+            "key": 1,
+            "extraType": "string"
+          },
+          "age": {
+            "key": 2,
+            "extraType": "number"
+          }
+        },
+        "required": [
+          "name",
+          "age"
+        ]
+      },
+      "type8": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "isHot": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "where": {
+              "key": 1,
+              "extraType": "string"
+            },
+            "code": {
+              "key": 6,
+              "extraType": "enum",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          "required": [
+            "where",
+            "code"
+          ]
+        }
+      },
+      "type9": {
+        "key": 8,
+        "extraType": "anyOf",
+        "anyOf": [
+          {
+            "key": 1,
+            "extraType": "string"
+          },
+          {
+            "key": 2,
+            "extraType": "number"
+          }
+        ]
+      },
+      "type10": {
+        "key": 6,
+        "extraType": "enum",
+        "enum": [
+          "Male",
+          "Female"
+        ]
+      },
+      "type11": {
+        "key": 6,
+        "extraType": "enum",
+        "enum": [
+          0,
+          1,
+          2
+        ]
+      },
+      "type12": {
+        "key": 8,
+        "extraType": "anyOf",
+        "anyOf": [
+          {
+            "key": 2,
+            "extraType": "number"
+          },
+          {
+            "key": 1,
+            "extraType": "string"
+          }
+        ]
+      },
+      "type13": {
+        "key": 6,
+        "extraType": "enum",
+        "enum": [
+          0,
+          1,
+          "0",
+          "1"
+        ]
+      },
+      "type14": {
+        "key": 6,
+        "extraType": "enum",
+        "enum": [
+          ""
+        ]
+      },
+      "type15": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 1,
+          "extraType": "string"
+        },
+        "min": 2,
+        "max": 2
+      },
+      "type16": {
+        "key": 7,
+        "extraType": "array",
+        "items": [
+          {
+            "key": 1,
+            "extraType": "string"
+          },
+          {
+            "key": 2,
+            "extraType": "number"
+          },
+          {
+            "key": 1,
+            "extraType": "string"
+          },
+          {
+            "key": 4,
+            "extraType": "boolean"
+          }
+        ],
+        "min": 4,
+        "max": 4
+      },
+      "type17": {
+        "key": 8,
+        "extraType": "anyOf",
+        "anyOf": [
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              true
+            ]
+          },
+          {
+            "key": 1,
+            "extraType": "string"
+          },
+          {
+            "key": 7,
+            "extraType": "array",
+            "items": {
+              "key": 2,
+              "extraType": "number"
+            }
+          },
+          {
+            "key": 7,
+            "extraType": "array",
+            "items": {
+              "key": 10,
+              "extraType": "object",
+              "properties": {
+                "type": {
+                  "key": 1,
+                  "extraType": "string"
+                },
+                "num": {
+                  "key": 2,
+                  "extraType": "number"
+                }
+              },
+              "required": [
+                "type",
+                "num"
+              ]
+            }
+          }
+        ]
+      },
+      "type18": {
+        "key": 6,
+        "extraType": "enum",
+        "enum": [
+          0,
+          1
+        ]
+      },
+      "type19": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 8,
+          "extraType": "anyOf",
+          "anyOf": [
+            {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            {
+              "key": 10,
+              "extraType": "object",
+              "properties": {
+                "type": {
+                  "key": 1,
+                  "extraType": "string"
+                },
+                "num": {
+                  "key": 2,
+                  "extraType": "number"
+                }
+              },
+              "required": [
+                "type",
+                "num"
+              ]
+            }
+          ]
+        }
+      },
+      "type20": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 8,
+          "extraType": "anyOf",
+          "anyOf": [
+            {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            {
+              "key": 9,
+              "extraType": "any"
+            }
+          ]
+        }
+      },
+      "type21": {
+        "key": 8,
+        "extraType": "anyOf",
+        "anyOf": [
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              0
+            ]
+          },
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              1
+            ]
+          },
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              "0"
+            ]
+          },
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              "1"
+            ]
+          },
+          {
+            "key": 3,
+            "extraType": "null"
+          },
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              true
+            ]
+          },
+          {
+            "key": 6,
+            "extraType": "enum",
+            "enum": [
+              false
+            ]
+          },
+          {
+            "key": 9,
+            "extraType": "any"
+          },
+          {
+            "key": 7,
+            "extraType": "array",
+            "items": {
+              "key": 6,
+              "extraType": "enum",
+              "enum": [
+                0,
+                "1"
+              ]
+            }
+          }
+        ]
+      },
+      "type22": {
+        "key": 10,
+        "extraType": "object",
+        "properties": {},
+        "additionalProperties": {
+          "key": 9,
+          "extraType": "any"
+        }
+      },
+      "type23": {
+        "key": 10,
+        "extraType": "object",
+        "properties": {},
+        "additionalProperties": {
+          "key": 2,
+          "extraType": "number"
+        }
+      },
+      "type24": {
+        "key": 10,
+        "extraType": "object",
+        "properties": {
+          "name": {
+            "key": 1,
+            "extraType": "string"
+          },
+          "num": {
+            "key": 2,
+            "extraType": "number"
+          },
+          "age": {
+            "key": 2,
+            "extraType": "number"
+          }
+        },
+        "required": [
+          "age",
+          "name",
+          "num"
+        ]
+      },
+      "type27": {
+        "key": 10,
+        "extraType": "object",
+        "properties": {},
+        "additionalProperties": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "allCached": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "cacheList": {
+              "key": 7,
+              "extraType": "array",
+              "items": {
+                "key": 9,
+                "extraType": "any"
+              }
+            }
+          },
+          "required": [
+            "allCached",
+            "cacheList"
+          ]
+        }
+      },
+      "type28": {
+        "key": 10,
+        "extraType": "object",
+        "properties": {},
+        "additionalProperties": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "allCached": {
+              "key": 4,
+              "extraType": "boolean"
+            },
+            "cacheList": {
+              "key": 7,
+              "extraType": "array",
+              "items": {
+                "key": 9,
+                "extraType": "any"
+              }
+            }
+          },
+          "required": [
+            "allCached",
+            "cacheList"
+          ]
+        }
+      }
+    },
+    "required": [
+      "type0",
+      "type2",
+      "type3",
+      "type4",
+      "type6",
+      "type7",
+      "type8",
+      "type9",
+      "type10",
+      "type11",
+      "type12",
+      "type13",
+      "type14",
+      "type15",
+      "type16",
+      "type17",
+      "type18",
+      "type19",
+      "type20",
+      "type21",
+      "type22",
+      "type23",
+      "type24",
+      "type27",
+      "type28"
+    ]
+  }
+}

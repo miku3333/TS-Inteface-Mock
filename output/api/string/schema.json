@@ -1,0 +1,46 @@
+{
+  "path": "/api/string",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "string0": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "string1": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "string2": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "string3": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "string4": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "string5": {
+        "key": 1,
+        "extraType": "string"
+      },
+      "string6": {
+        "key": 1,
+        "extraType": "string"
+      }
+    },
+    "required": [
+      "string0",
+      "string1",
+      "string2",
+      "string3",
+      "string4",
+      "string5",
+      "string6"
+    ]
+  }
+}

@@ -3,17 +3,18 @@ import { ROOT_PATH, SUCCESS_RES } from '../../constants';
 import { niceTryAsync } from '../../utils';
 import fs from 'fs-extra';
 import slash from 'slash';
-import path from 'path';
+import pathM from 'path';
 
-const outputDir = path.join(ROOT_PATH, 'extendedSchema');
+const outputDir = pathM.join(ROOT_PATH, 'extendedSchema');
 
 const save: Router.IMiddleware = async (ctx) => {
-    const { route, schema } = ctx.request.body as IObject;
-    if (route && schema) {
-        const outputPath = slash(path.join(outputDir, `${route}.json`));
+    const { path, schema } = ctx.request.body as IObject;
+    console.log('ctx.request.body ===> ', ctx.request.body);
+    if (path && schema) {
+        const outputPath = slash(pathM.join(outputDir, `${path}/schema.json`));
         const result = await niceTryAsync(async () => {
             await fs.ensureFile(outputPath);
-            await fs.writeJSON(outputPath, { route, schema }, { spaces: '  ' });
+            await fs.writeJSON(outputPath, { path, schema }, { spaces: '  ' });
             return 'success';
         });
         if (result) {

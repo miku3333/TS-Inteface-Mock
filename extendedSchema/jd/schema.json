@@ -1,0 +1,194 @@
+{
+  "path": "/jd",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "search": {
+        "key": 1,
+        "extraType": "string",
+        "min": 3,
+        "max": 8,
+        "type": "normal"
+      },
+      "banners": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 1,
+          "extraType": "string",
+          "type": "imgUrl"
+        },
+        "min": 8,
+        "max": 8
+      },
+      "vajras": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "img": {
+              "key": 1,
+              "extraType": "string",
+              "type": "imgUrl"
+            },
+            "name": {
+              "key": 1,
+              "extraType": "string",
+              "min": 2,
+              "max": 5,
+              "type": "normal"
+            }
+          },
+          "required": [
+            "img",
+            "name"
+          ]
+        },
+        "min": 6,
+        "max": 30
+      },
+      "scrolls": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "img": {
+              "key": 1,
+              "extraType": "string",
+              "type": "imgUrl"
+            },
+            "value": {
+              "key": 2,
+              "extraType": "number",
+              "min": 3,
+              "max": 50000,
+              "type": "float"
+            }
+          },
+          "required": [
+            "img",
+            "value"
+          ]
+        },
+        "min": 10,
+        "max": 30
+      },
+      "goodsList": {
+        "key": 7,
+        "extraType": "array",
+        "items": {
+          "key": 10,
+          "extraType": "object",
+          "properties": {
+            "img": {
+              "key": 1,
+              "extraType": "string",
+              "type": "imgUrl"
+            },
+            "title": {
+              "key": 1,
+              "extraType": "string",
+              "min": 3,
+              "max": 40,
+              "type": "normal"
+            },
+            "value": {
+              "key": 2,
+              "extraType": "number",
+              "min": 3,
+              "max": 5000,
+              "type": "float"
+            },
+            "lowDay": {
+              "key": 2,
+              "extraType": "number",
+              "min": 30,
+              "max": 720,
+              "type": "int"
+            },
+            "jdLogistics": {
+              "key": 4,
+              "extraType": "boolean",
+              "trueRate": 0.15
+            },
+            "remarkCount": {
+              "key": 2,
+              "extraType": "number",
+              "min": 2,
+              "max": 2000000,
+              "type": "int"
+            },
+            "favorableRate": {
+              "key": 2,
+              "extraType": "number",
+              "min": 90,
+              "max": 100,
+              "type": "int"
+            },
+            "selfSupport": {
+              "key": 4,
+              "extraType": "boolean",
+              "trueRate": 0.15
+            },
+            "seckill": {
+              "key": 4,
+              "extraType": "boolean",
+              "trueRate": 0.15
+            },
+            "jdSuperMarket": {
+              "key": 4,
+              "extraType": "boolean",
+              "trueRate": 0.15
+            },
+            "fullDiscount": {
+              "key": 7,
+              "extraType": "array",
+              "items": {
+                "key": 2,
+                "extraType": "number",
+                "min": 10,
+                "max": 50000,
+                "type": "int"
+              },
+              "min": 2,
+              "max": 2
+            },
+            "numberDiscount": {
+              "key": 7,
+              "extraType": "array",
+              "items": {
+                "key": 2,
+                "extraType": "number",
+                "min": 1,
+                "max": 10,
+                "type": "int"
+              },
+              "min": 2,
+              "max": 2
+            }
+          },
+          "required": [
+            "img",
+            "title",
+            "value",
+            "selfSupport"
+          ]
+        },
+        "min": 20,
+        "max": 40
+      }
+    },
+    "required": [
+      "search",
+      "banners",
+      "vajras",
+      "scrolls",
+      "goodsList"
+    ]
+  }
+}

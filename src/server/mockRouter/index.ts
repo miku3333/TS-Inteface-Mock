@@ -4,31 +4,39 @@ import glob from 'fast-glob';
 import path from 'path';
 import slash from 'slash';
 import { ROOT_PATH } from '../../constants';
+import { genMockData } from '../../module/mock';
 
 const mockRouter = new Router();
-const mockSchemaDir = path.join(ROOT_PATH, 'extendedSchema/**');
+const mockSchemaDir = slash(path.join(ROOT_PATH, 'extendedSchema/**'));
+const genSchemaDir = slash(path.join(ROOT_PATH, 'output/**'));
 
-(async () => {
-    const routes = await glob(slash(mockSchemaDir));
+const mock = async (dir: string) => {
+    const routes = await glob(dir);
     routes.forEach((route) => {
         fs.readJson(route)
             .then((fileData) => {
-                const { route, schema } = fileData;
-                if (route && schema) {
-                    mockRouter.all(route, (ctx) => {
-                        ctx.body = schema;
+                const { path, schema } = fileData;
+                if (path && schema) {
+                    mockRouter.all(path, (ctx) => {
+                        ctx.body = {
+                            data: genMockData(schema),
+                            code: 0,
+                            success: true,
+                            message: '请求成功',
+                            msg: '请求成功'
+                        };
                     });
                 } else {
                     throw new Error();
                 }
             })
             .catch((err) => {
-                console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
                 console.log('err ===> ', err);
-                console.log('route ===> ', err);
-                console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             });
     });
-})();
+};
+
+mock(mockSchemaDir);
+mock(genSchemaDir);
 
 export default mockRouter;

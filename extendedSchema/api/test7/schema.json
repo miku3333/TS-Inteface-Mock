@@ -1,0 +1,28 @@
+{
+  "path": "/api/test7",
+  "schema": {
+    "key": 7,
+    "extraType": "array",
+    "items": {
+      "key": 10,
+      "extraType": "object",
+      "properties": {
+        "key": {
+          "key": 2,
+          "extraType": "number"
+        },
+        "name": {
+          "key": 1,
+          "extraType": "string",
+          "min": 5,
+          "max": 10,
+          "type": "timestamp"
+        }
+      },
+      "required": [
+        "key",
+        "name"
+      ]
+    }
+  }
+}

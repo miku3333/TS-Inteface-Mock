@@ -1,0 +1,56 @@
+{
+  "path": "/api/string",
+  "schema": {
+    "key": 10,
+    "extraType": "object",
+    "properties": {
+      "string0": {
+        "key": 1,
+        "extraType": "string",
+        "type": "timestamp"
+      },
+      "string1": {
+        "key": 1,
+        "extraType": "string",
+        "type": "url"
+      },
+      "string2": {
+        "key": 1,
+        "extraType": "string",
+        "type": "name"
+      },
+      "string3": {
+        "key": 1,
+        "extraType": "string",
+        "type": "county"
+      },
+      "string4": {
+        "key": 1,
+        "extraType": "string",
+        "type": "en"
+      },
+      "string5": {
+        "key": 1,
+        "extraType": "string",
+        "min": 12,
+        "max": 18,
+        "type": "normal"
+      },
+      "string6": {
+        "key": 1,
+        "extraType": "string",
+        "min": 4,
+        "type": "normal"
+      }
+    },
+    "required": [
+      "string0",
+      "string1",
+      "string2",
+      "string3",
+      "string4",
+      "string5",
+      "string6"
+    ]
+  }
+}

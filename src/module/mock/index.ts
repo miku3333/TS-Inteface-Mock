@@ -1,14 +1,20 @@
-import slash from 'slash';
-import Mock from 'mockjs';
-import { isArray, niceTry, niceTryAsync } from './../../utils/index';
 import fs from 'fs-extra';
-import path from 'path';
-import { ROOT_PATH, SCHEMA_TYPE } from '../../constants';
+import Mock from 'mockjs';
+import { ROOT_PATH, SCHEMA_TYPE, SERVER_PATH } from '../../constants';
 import { MAX_COUNT, MIN_COUNT, RANDOM_RANGE } from '../../constants/mock';
+import dayjs from 'dayjs';
+import glob from 'fast-glob';
+import slash from 'slash';
+import path from 'path';
+
+const imgs: string[] = fs.readFileSync(path.join(ROOT_PATH, 'imgs.txt')).toString().split('\n');
+const getRandomImg = () => {
+    const len = imgs.length;
+    const index = Math.floor(Math.random() * len + 1);
+    return `${SERVER_PATH}/img/${imgs[index]}`;
+};
 
 const Random = Mock.Random;
-const inputPath = slash(path.join(ROOT_PATH, 'output/single.json'));
-const outputPath = slash(path.join(ROOT_PATH, 'mockOutput/data.json'));
 
 export const genAnyOf = () => [Mock.mock('@ctitle'), Mock.mock('@natural'), null, Math.random() < 0.5];
 
@@ -21,17 +27,68 @@ const getAnyOf = (items: any[] = genAnyOf()) => {
 
 const getIsNotRequired = () => Math.random() < RANDOM_RANGE;
 
-const getCount = (min = MIN_COUNT, max = MAX_COUNT) => Math.abs(Math.floor(Math.random() * (max - min) + min));
+const getCount = (min = MIN_COUNT, max = MAX_COUNT, isInt = true) => {
+    const random = Math.random() * (max - min) + min;
+    if (isInt) {
+        return Math.abs(Math.floor(random));
+    } else {
+        return Math.abs(random);
+    }
+};
 
-export const genMockData = (schema: IAllSchema, ownKey = ''): any => {
+const getMinMax = (min?: number, max?: number) => {
+    const hasMin = typeof min === 'number';
+    const hasMax = typeof max === 'number';
+    if (hasMin && hasMax) {
+        return [min, max];
+    } else if (hasMin) {
+        return [min, min + 14];
+    } else if (hasMax) {
+        return [Math.max(max - 14, 0), max];
+    } else {
+        return [1, 15];
+    }
+};
+
+export const genMockData = (schema: IAllSchemaExtended, ownKey = ''): any => {
     if (schema.isRequired === false && getIsNotRequired()) {
         return null;
     }
     switch (schema.key) {
-        case SCHEMA_TYPE.string:
-            return Random.ctitle();
-        case SCHEMA_TYPE.number:
+        case SCHEMA_TYPE.string: {
+            const { type } = schema;
+            const [min, max] = getMinMax(schema.min, schema.max);
+            switch (type) {
+                case 'timestamp':
+                    return dayjs(Random.datetime()).valueOf();
+                case 'url':
+                    return Random.url();
+                case 'imgUrl':
+                    return getRandomImg();
+                case 'county':
+                    return Random.county(true);
+                case 'name':
+                    return Random.cname();
+                case 'en':
+                    return Random.word(min, max);
+                case 'normal':
+                default:
+                    return Random.ctitle(min, max);
+            }
+        }
+        case SCHEMA_TYPE.number: {
+            const { type } = schema;
+            const [min, max] = getMinMax(schema.min, schema.max);
+            switch (type) {
+                case 'int':
+                    return getCount(min, max);
+                case 'float':
+                    return getCount(min, max, false);
+                case 'timestamp':
+                    return dayjs(Random.datetime()).valueOf();
+            }
             return Random.natural();
+        }
         case SCHEMA_TYPE.null:
             return null;
         case SCHEMA_TYPE.boolean:
@@ -85,31 +142,5 @@ export const genMockData = (schema: IAllSchema, ownKey = ''): any => {
         case SCHEMA_TYPE.ERROR:
             return schema;
     }
-    return;
+    return 'ERROR';
 };
-
-export const getMockData = async (): Promise<IObject | null> => {
-    let jsonSchema: IFormattedSchema[] | undefined = await niceTryAsync(async () => {
-        const jsonSchema = await fs.readJson(inputPath);
-        return jsonSchema;
-    });
-    let mockData: any[] = [];
-    if (jsonSchema) {
-        mockData = jsonSchema.map(({ path, schema }) => {
-            const data = genMockData(schema);
-            if (data === undefined) {
-                return { path, data: 'ERROR' };
-            }
-            return { path, data };
-        });
-        // console.log('jsonSchema ===> ', jsonSchema);
-    }
-    const result = await niceTryAsync(async () => {
-        await fs.writeJSON(outputPath, mockData, { spaces: '\t' });
-        return 'success';
-    });
-    console.log('result ===> ', result || 'fail');
-    return null;
-};
-
-getMockData();

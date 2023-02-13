@@ -26,6 +26,8 @@ export const ERROR_RES = {
     success: false,
     msg: null
 };
+export const PORT = 23333;
+export const SERVER_PATH = `http://localhost:${PORT}`;
 // export const inputPath = slash(path.resolve(__dirname, 'interface/*'));
 // export const outputPath = path.resolve(__dirname, '../output/');
 // export const outputPathSingleFile = path.resolve(outputPath, 'output.json');
